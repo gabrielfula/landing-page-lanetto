@@ -2,31 +2,31 @@ import { useState, type FormEvent } from "react";
 import { wppLink } from "../helpers/Helper";
 import { INTERESTS } from "../data/landing";
 
-async function notifyTelegram(vip: {
-  name: string;
-  phone: string;
-  interest: string;
-}) {
-  const text = [
-    "🏋️ *Novo lead — Lista VIP Lanetto Fitness*",
-    "",
-    `*Nome:* ${vip.name}`,
-    `*WhatsApp:* ${vip.phone}`,
-    `*Interesse:* ${vip.interest}`,
-    `*Quando:* ${new Date().toLocaleString("pt-BR")}`,
-  ].join("\n");
+// async function notifyTelegram(vip: {
+//   name: string;
+//   phone: string;
+//   interest: string;
+// }) {
+//   const text = [
+//     "🏋️ *Novo lead — Lista VIP Lanetto Fitness*",
+//     "",
+//     `*Nome:* ${vip.name}`,
+//     `*WhatsApp:* ${vip.phone}`,
+//     `*Interesse:* ${vip.interest}`,
+//     `*Quando:* ${new Date().toLocaleString("pt-BR")}`,
+//   ].join("\n");
 
-  /* Vou fazer a requisicao para o backend aqui */
+//   /* Vou fazer a requisicao para o backend aqui */
 
-  // try {
-  //   // const res = await fetch();
-  //   if (!res.ok) {
-  //     console.error("Falha ao notificar Telegram:", await res.text());
-  //   }
-  // } catch (err) {
-  //   console.error("Erro ao notificar Telegram:", err);
-  // }
-}
+//   // try {
+//   //   // const res = await fetch();
+//   //   if (!res.ok) {
+//   //     console.error("Falha ao notificar Telegram:", await res.text());
+//   //   }
+//   // } catch (err) {
+//   //   console.error("Erro ao notificar Telegram:", err);
+//   // }
+// }
 
 export default function VipForm() {
   const [vipSent, setVipSent] = useState(false);
@@ -42,7 +42,7 @@ export default function VipForm() {
     if (!vip.name.trim() || !vip.phone.trim()) return;
 
     setSending(true);
-    await notifyTelegram(vip);
+    // await notifyTelegram(vip);
     setSending(false);
     setVipSent(true);
   };

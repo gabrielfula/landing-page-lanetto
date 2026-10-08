@@ -13,7 +13,7 @@ import VideoModal from "./VideoModal";
 import Navbar from "./Navbar";
 
 export default function LanettoFitness() {
-  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const [_, setCheckoutOpen] = useState(false);
   const [video, setVideo] = useState<VideoItem | null>(null);
 
   useEffect(() => {
