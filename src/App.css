@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+}
+
+@layer components {
+  /* ---------- Botões ---------- */
+  .btn-hero {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-purple-500/40
+      bg-gradient-to-br from-[#5E1DA6] to-[#3B0A75] px-5 py-2.5 text-sm font-bold tracking-wide text-white
+      shadow-[0_4px_22px_rgba(94,29,166,0.45)] transition
+      hover:-translate-y-0.5 hover:border-purple-300/60 hover:shadow-[0_8px_30px_rgba(134,54,224,0.65)];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-full border border-white/15 bg-white/5
+      px-6 py-3.5 text-[15px] font-semibold text-white transition
+      hover:border-purple-500 hover:bg-[#5E1DA6]/25 hover:text-purple-100;
+  }
+
+  /* Tamanhos (devem vir depois de .btn-hero e .btn-ghost) */
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
+  .btn-lg {
+    @apply px-9 py-4 text-base;
+  }
+
+  /* ---------- Textos de seção ---------- */
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-full border border-purple-500/45 bg-[#5E1DA6]/20
+      px-4 py-1.5 text-[13px] font-bold uppercase tracking-[0.08em] text-purple-200
+      shadow-[0_0_20px_rgba(94,29,166,0.25)];
+  }
+  .section-tag {
+    @apply mb-2 block text-xs font-extrabold uppercase tracking-[0.18em] text-purple-500;
+  }
+  .section-title {
+    @apply text-[clamp(1.85rem,4vw,2.6rem)] font-extrabold leading-[1.15] tracking-tight text-white;
+  }
+  .section-subtitle {
+    @apply mt-3 text-base text-[#9aa4b2];
+  }
+
+  /* ---------- Formulário ---------- */
+  .field-label {
+    @apply mb-1.5 block text-[13.6px] font-semibold text-slate-200;
+  }
+  .input-field {
+    @apply w-full rounded-[10px] border border-[#8636E0]/30 bg-[#0c0a12]/90 px-4 py-3.5 text-[15px]
+      text-white outline-none transition placeholder:text-slate-500
+      focus:border-purple-500 focus:ring-[3px] focus:ring-[#5E1DA6]/40;
+  }
+
+  /* ---------- Cards e modais ---------- */
+  .card-diff {
+    @apply rounded-[18px] border border-[#8636E0]/20 bg-[#161220]/60 p-7 transition duration-300
+      hover:-translate-y-1 hover:border-purple-500/50 hover:bg-[#1a142a]/85
+      hover:shadow-[0_12px_30px_rgba(94,29,166,0.2)];
+  }
+  .modal-overlay {
+    @apply fixed inset-0 z-[999] flex items-center justify-center bg-[#08060c]/85 p-6 backdrop-blur-[10px];
+  }
+  .modal-card {
+    @apply relative w-full max-w-[500px] rounded-[20px] border border-purple-500/40 bg-[#151122] p-8
+      shadow-[0_25px_60px_rgba(0,0,0,0.8)];
+  }
+  .modal-close {
+    @apply absolute right-5 top-5 text-2xl leading-none text-slate-400 hover:text-white;
+  }
+}
