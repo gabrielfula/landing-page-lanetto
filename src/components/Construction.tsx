@@ -6,20 +6,16 @@ type ConstructionProps = {
 
 export default function Construction({ onSelectVideo }: ConstructionProps) {
   return (
-    <section
-      id="obra"
-      className="bg-gradient-to-b from-[#0e0d14]/60 to-[#14101c]/70 px-6 py-20"
-    >
-      <div className="mx-auto mb-12 max-w-[680px] text-center">
-        <span className="section-tag">Bastidores &amp; Execução</span>
+    <section id="obra" className="p-6">
+      <div className="mx-auto mb-8 max-w-[680px] text-center">
+        <span className="section-tag">Experiência L'Anetto</span>
         <h2 className="section-title">Acompanhe a transformação</h2>
         <p className="section-subtitle">
-          Veja cada detalhe do projeto ganhando vida. Do piso emborrachado
-          importado à iluminação biofílica, tudo está sendo executado em ritmo
-          acelerado.
+          Cada detalhe aqui foi pensado para proporcionar uma experiência única.
+          Ambientes modernos, confortáveis e inspiradores, criados para que você
+          se sinta bem, encontre seu equilíbrio e evolua a cada dia.
         </p>
       </div>
-
       <div className="mx-auto grid max-w-[1160px] gap-6 [grid-template-columns:repeat(auto-fit,minmax(320px,1fr))]">
         {VIDEOS.map((v) => (
           <article

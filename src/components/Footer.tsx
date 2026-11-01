@@ -6,24 +6,16 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[#090b0e] px-6 pb-10 pt-14 text-[#9aa4b2]">
+    <footer className="border-t border-white/10 bg-primary-dark px-6 pb-10 pt-14 text-[#9aa4b2]">
       <div className="mx-auto flex max-w-[1160px] flex-col gap-8 md:flex-row md:items-center md:justify-between">
         <div>
           <div className="mb-3 inline-flex items-center gap-2.5">
-            <span
-              aria-hidden="true"
-              className="flex h-[30px] w-[30px] items-center justify-center rounded-lg border border-purple-500/40 bg-gradient-to-br from-[#5E1DA6] to-[#3B0A75] text-sm font-black text-white"
-            >
-              L
-            </span>
-            <span className="text-[1.1rem] font-extrabold tracking-[0.1em] text-white">
-              LANETTO FITNESS
-            </span>
+            <img src="/logo-white.png" alt="Logo Lanetto" className="w-64" />
           </div>
           <p className="m-0 max-w-[380px] text-sm leading-normal">
             A nova referência em alta performance e bem-estar no Zed de
-            Boulevard em Nova Odessa, São Paulo. Inauguração em 12 de Novembro
-            de 2026.
+            Boulevard em Nova Odessa, São Paulo. Inauguração em 15 de Janeiro de
+            2027.
           </p>
         </div>
 
@@ -51,7 +43,7 @@ export default function Footer() {
       </div>
       <div className="mx-auto mt-8 flex max-w-[1160px] flex-wrap justify-between gap-4 border-t border-white/5 pt-6 text-xs">
         <span>
-          © 2026 Lanetto Fitness. Todos os direitos reservados. CNPJ:
+          © 2026 L'Anetto Fitness. Todos os direitos reservados. CNPJ:
           [62.799.244/0001-33].
         </span>
         <span>Desenvolvido para público de alto padrão.</span>

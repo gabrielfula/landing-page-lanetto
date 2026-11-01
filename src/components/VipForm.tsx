@@ -8,7 +8,7 @@ import { INTERESTS } from "../data/landing";
 //   interest: string;
 // }) {
 //   const text = [
-//     "🏋️ *Novo lead — Lista VIP Lanetto Fitness*",
+//     "🏋️ *Novo lead — Lista VIP L'Anetto Fitness*",
 //     "",
 //     `*Nome:* ${vip.name}`,
 //     `*WhatsApp:* ${vip.phone}`,
@@ -48,11 +48,11 @@ export default function VipForm() {
   };
 
   const vipWpp = wppLink(
-    `Olá! Meu nome é ${vip.name}. Me cadastrei na Lista VIP da Lanetto Fitness (Interesse: ${vip.interest}) e quero assegurar minha condição do 1º Lote.`,
+    `Olá! Meu nome é ${vip.name}. Me cadastrei na Lista VIP da L'Anetto Fitness (Interesse: ${vip.interest}) e quero assegurar minha condição do 1º Lote.`,
   );
 
   return (
-    <section id="vip-list" className="px-6 py-20">
+    <section id="vip-list" className="p-6">
       <div className="mx-auto max-w-[680px] rounded-3xl border border-purple-500/40 bg-[radial-gradient(circle_at_top_right,rgba(94,29,166,0.25)_0%,rgba(20,16,30,0.96)_100%)] px-9 py-12 text-center shadow-[0_20px_55px_rgba(0,0,0,0.75),0_0_35px_rgba(94,29,166,0.2)]">
         <span className="pill mb-4">Acesso Antecipado</span>
         <h2 className="mb-3 text-[2.1rem] font-extrabold text-white">
@@ -121,14 +121,14 @@ export default function VipForm() {
         ) : (
           <div
             role="alert"
-            className="mt-6 rounded-xl border border-purple-500 bg-[#5E1DA6]/25 p-6 text-center text-white"
+            className="mt-6 rounded-xl border border-purple-500 bg-primary/25 p-6 text-center text-white"
           >
             <h4 className="mb-2 text-xl font-extrabold text-purple-500">
               🎉 Inscrição Confirmada!
             </h4>
             <p className="mb-4 text-[15px] text-slate-200">
               Parabéns! Suas informações foram cadastradas na prioridade máxima
-              da <strong>Lista VIP Lanetto Fitness</strong>. Nosso concierge
+              da <strong>Lista VIP L'Anetto Fitness</strong>. Nosso concierge
               entrará em contato via WhatsApp.
             </p>
             <a

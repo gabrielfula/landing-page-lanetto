@@ -7,19 +7,19 @@ export default function Location() {
       <div className="mx-auto grid max-w-[1160px] items-center gap-8 md:grid-cols-[1fr_1.2fr]">
         <div>
           <span className="section-tag">Endereço Privilegiado</span>
-          <h2 className="mb-4 text-[2.2rem] font-extrabold leading-tight text-white">
+          <h2 className="mb-4 text-[2.2rem] font-extrabold leading-tight text-black">
             No coração do Zed de Boulevard
           </h2>
-          <p className="text-base leading-relaxed text-[#9aa4b2]">
+          <p className="text-base leading-relaxed text-primary-dark">
             Acesso fácil, conveniência absoluta e total segurança. Treine em um
             ambiente integrado ao melhor centro de convivência de Nova Odessa,
             São Paulo.
           </p>
-          <div className="mt-6 rounded-[14px] border border-white/10 bg-[#161b22]/70 p-5">
-            <p className="m-0 text-base font-bold text-white">
+          <div className="mt-6 rounded-[14px] border border-white/10 card-diff p-5">
+            <p className="m-0 text-base font-bold text-primary-dark">
               📍 Zed de Boulevard
             </p>
-            <p className="mb-0 mt-1 text-sm text-[#9aa4b2]">
+            <p className="mb-0 mt-1 text-sm text-black">
               Nova Odessa, São Paulo — Estacionamento e acessibilidade completa
             </p>
           </div>
@@ -28,7 +28,7 @@ export default function Location() {
             {MALL_PERKS.map((p) => (
               <li
                 key={p.t}
-                className="flex items-center gap-2.5 text-[14.8px] text-slate-300"
+                className="flex items-center gap-2.5 text-[14.8px] text-black"
               >
                 <Icon size={18} className="shrink-0 text-purple-500">
                   {p.i}
@@ -41,7 +41,7 @@ export default function Location() {
 
         <div className="h-[380px] w-full overflow-hidden rounded-[20px] border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
           <iframe
-            title="Mapa da localização da Lanetto Fitness"
+            title="Mapa da localização da L'Anetto Fitness"
             src={MAP_SRC}
             className="h-full w-full border-0"
             loading="lazy"

@@ -2,9 +2,9 @@ import type { ReactNode } from "react";
 
 export const TARGET_DATE = new Date("2026-11-12T08:00:00-03:00").getTime();
 export const WHATSAPP_NUMBER = "5519991756620";
-export const PRICE = "R$ (PENDENTE)";
+export const PRICE = "R$ ()";
 export const CHECKOUT_URL =
-  "https://pagamento.lanettofitness.com.br/checkout/1-lote";
+  "https://pagamento.L'Anettofitness.com.br/checkout/1-lote";
 
 export type Benefit = { b: string; t: string };
 
@@ -18,7 +18,7 @@ export const BENEFITS: Benefit[] = [
     t: " com a diretoria técnica antes da abertura oficial.",
   },
   {
-    b: "Kit Boas-Vindas Lanetto Black",
+    b: "Kit Boas-Vindas L'Anetto Black",
     t: " (bag térmica personalizada + garrafa térmica premium + toalha esportiva).",
   },
   { b: "Isenção vitalícia", t: " de taxa de renovação e taxa de matrícula." },
@@ -167,7 +167,7 @@ export type VideoItem = {
 
 export const VIDEOS: VideoItem[] = [
   {
-    stage: "Fase 01 · Estrutura",
+    stage: "· Recepção",
     title: "Piso Acústico & Infraestrutura",
     desc: "Adequação técnica de laje e sistemas de climatização com filtragem hospitalar.",
     modalTitle: "Fundação e Instalações Especiais",
@@ -175,7 +175,7 @@ export const VIDEOS: VideoItem[] = [
     img: "https://img.usecurling.com/p/600/380?q=modern%20gym%20construction&color=black",
   },
   {
-    stage: "Fase 02 · Design de Interiores",
+    stage: "· Vestiários",
     title: "Tour Render 3D do Espaço",
     desc: "Visão panorâmica dos vestiários executivos e ilhas de musculação avançada.",
     modalTitle: "Projeto Arquitetônico 3D",
@@ -184,7 +184,31 @@ export const VIDEOS: VideoItem[] = [
     img: "https://img.usecurling.com/p/600/380?q=luxury%20fitness%20interior&color=gray",
   },
   {
-    stage: "Fase 03 · Montagem",
+    stage: "· Recovery",
+    title: "Chegada dos Equipamentos",
+    desc: "Unboxing e calibração das primeiras máquinas importadas de alta precisão.",
+    modalTitle: "Chegada do Maquinário",
+    modalDesc: "Acompanhe o desembarque dos equipamentos de biomecânica.",
+    img: "https://img.usecurling.com/p/600/380?q=fitness%20equipment%20luxury&color=black",
+  },
+  {
+    stage: "· Musculação",
+    title: "Chegada dos Equipamentos",
+    desc: "Unboxing e calibração das primeiras máquinas importadas de alta precisão.",
+    modalTitle: "Chegada do Maquinário",
+    modalDesc: "Acompanhe o desembarque dos equipamentos de biomecânica.",
+    img: "https://img.usecurling.com/p/600/380?q=fitness%20equipment%20luxury&color=black",
+  },
+  {
+    stage: "· Yoga & Aulas coletivas",
+    title: "Chegada dos Equipamentos",
+    desc: "Unboxing e calibração das primeiras máquinas importadas de alta precisão.",
+    modalTitle: "Chegada do Maquinário",
+    modalDesc: "Acompanhe o desembarque dos equipamentos de biomecânica.",
+    img: "https://img.usecurling.com/p/600/380?q=fitness%20equipment%20luxury&color=black",
+  },
+  {
+    stage: "· Pilates",
     title: "Chegada dos Equipamentos",
     desc: "Unboxing e calibração das primeiras máquinas importadas de alta precisão.",
     modalTitle: "Chegada do Maquinário",
@@ -195,12 +219,12 @@ export const VIDEOS: VideoItem[] = [
 
 export const FAQS = [
   {
-    q: "Quando a Lanetto Fitness abre oficialmente?",
-    a: "A inauguração está cravada para o dia 12 de Novembro de 2026 no Zed de Boulevard (Nova Odessa, São Paulo). Membros fundadores do 1º Lote terão acesso antecipado exclusivo para realização do tour técnico, testes de equipamentos e boas-vindas personalizadas nos 3 dias anteriores à abertura oficial.",
+    q: "Quando a L'Anetto Fitness abre oficialmente?",
+    a: "A inauguração está cravada para o dia 15 de Janeiro de 2027 no Zed de Boulevard (Nova Odessa, São Paulo). Membros fundadores do 1º Lote terão acesso antecipado exclusivo para realização do tour técnico, testes de equipamentos e boas-vindas personalizadas nos 3 dias anteriores à abertura oficial.",
   },
   {
     q: 'O que é exatamente o "1º Lote" de inauguração?',
-    a: "O 1º Lote é uma cota limitada a apenas 100 vagas com a menor tarifa de adesão que a Lanetto Fitness terá. Você garante o preço de pré-abertura congelado durante todo o plano, isenção completa de matrículas e o Kit Fundador Lanetto Black entregue na recepção.",
+    a: "O 1º Lote é uma cota limitada a apenas 100 vagas com a menor tarifa de adesão que a L'Anetto Fitness terá. Você garante o preço de pré-abertura congelado durante todo o plano, isenção completa de matrículas e o Kit Fundador L'Anetto Black entregue na recepção.",
   },
   {
     q: "Como funciona a adesão e o pagamento online?",
@@ -208,7 +232,7 @@ export const FAQS = [
   },
   {
     q: "Posso cancelar antes da inauguração caso meus planos mudem?",
-    a: "Sim, com tranquilidade absoluta. Você possui garantia incondicional de devolução de 100% do valor pago até 7 dias após o seu primeiro treino oficial na unidade. Transparência e respeito mútuo são pilares do padrão Lanetto.",
+    a: "Sim, com tranquilidade absoluta. Você possui garantia incondicional de devolução de 100% do valor pago até 7 dias após o seu primeiro treino oficial na unidade. Transparência e respeito mútuo são pilares do padrão L'Anetto.",
   },
 ];
 

@@ -1,33 +1,16 @@
 import { wppLink } from "../helpers/Helper";
 
 const vipWpp = wppLink(
-  "Olá, gostaria de informações sobre o 1º Lote da Lanetto Fitness",
+  "Olá, gostaria de informações sobre o 1º Lote da L'Anetto Fitness",
 );
 
 export default function Navbar() {
   return (
     <>
-      <header className="sticky top-0 z-[100] border-b border-[#5E1DA6]/20 bg-[#0e0d14]/90 px-6 py-3.5 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-4">
-          <a
-            href="#"
-            aria-label="Lanetto Fitness Início"
-            className="inline-flex items-center gap-2.5 text-white no-underline"
-          >
-            <span
-              aria-hidden="true"
-              className="flex h-9 w-9 items-center justify-center rounded-lg border border-purple-500/40 bg-gradient-to-br from-[#5E1DA6] to-[#3B0A75] text-lg font-black tracking-tighter shadow-[0_0_18px_rgba(94,29,166,0.55)]"
-            >
-              L
-            </span>
-            <span className="flex flex-col">
-              <span className="text-lg font-extrabold uppercase leading-none tracking-[0.12em]">
-                LANETTO
-              </span>
-              <span className="mt-0.5 text-[10px] font-bold uppercase tracking-[0.22em] text-purple-500">
-                FITNESS · BOUTIQUE
-              </span>
-            </span>
+      <header className="sticky top-0 z-[100] border-primary-dark/20 bg-primary px-6 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-[1200px] justify-between gap-4">
+          <a href="#" aria-label="L'Anetto Fitness Início" className="w-16">
+            <img src="/l-without-bg.png" alt="L" />
           </a>
           <div className="flex items-center gap-3">
             <a
@@ -35,7 +18,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               title="Conversar no WhatsApp"
-              className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:border-purple-500 hover:bg-[#5E1DA6]/25 hover:text-purple-100"
+              className="btn-hero inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:border-purple-500 hover:bg-primary/25 hover:text-purple-100"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -46,7 +29,7 @@ export default function Navbar() {
               </svg>
               <span className="hidden sm:inline">WhatsApp</span>
             </a>
-            <a href="#lote1" className="btn-hero">
+            <a href="#lote1" className="btn-hero p-3.5">
               Garanta sua vaga
             </a>
           </div>

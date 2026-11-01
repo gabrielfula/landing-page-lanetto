@@ -31,17 +31,17 @@ export default function Countdown() {
   return (
     <div
       aria-label="Tempo restante até a inauguração"
-      className="mx-auto mb-10 grid max-w-[580px] grid-cols-4 gap-3.5"
+      className="mx-auto mb-6 flex w-fit items-center justify-center divide-x divide-primary-dark/15 py-5"
     >
       {countdown.map(([label, val]) => (
         <div
           key={label}
-          className="rounded-[14px] border border-white/10 bg-[#161b22]/80 px-2 py-4 shadow-[0_10px_30px_rgba(0,0,0,0.35)] backdrop-blur-md"
+          className="min-w-[72px] px-4 text-center sm:min-w-[110px] sm:px-8"
         >
-          <div className="text-[clamp(1.8rem,4vw,2.5rem)] font-extrabold leading-none tabular-nums text-white">
+          <div className="bg-gradient-to-b from-primary-dark to-primary-light bg-clip-text text-[clamp(1.8rem,4vw,2.75rem)] font-light leading-none tabular-nums text-transparent">
             {val}
           </div>
-          <div className="mt-1.5 text-[11.5px] font-semibold uppercase tracking-[0.12em] text-[#9aa4b2]">
+          <div className="mt-2 font-extrabold text-[10.5px] uppercase tracking-[0.2em] text-neutral-500">
             {label}
           </div>
         </div>

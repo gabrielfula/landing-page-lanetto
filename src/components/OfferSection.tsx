@@ -1,88 +1,153 @@
-import { BENEFITS, PRICE } from "../data/landing";
+import Reveal, { Stagger, StaggerItem } from "./Reveal";
 
 type OfferSectionProps = {
   onOpenCheckout: () => void;
 };
 
+type Plan = {
+  name: string;
+  price: number;
+  from: number;
+  highlight?: boolean;
+  features: string[];
+};
+
+const PLANS: Plan[] = [
+  {
+    name: "Essential",
+    price: 179,
+    from: 229,
+    features: [
+      "Acesso ilimitado a musculação e cardio",
+      "Aulas coletivas inclusas",
+      "Vestiários completos e espaços de convivência",
+      "App para acompanhar seus treinos",
+      "Atendimento personalizado",
+      "Avaliação Bioimpedância",
+    ],
+  },
+  {
+    name: "Plus",
+    price: 249,
+    from: 319,
+    features: [
+      "Tudo do plano Essential",
+      "4 aulas de Pilates Reformer por mês",
+      "2 sessões de Recovery por mês",
+      "Bota de compressão pneumática inclusa",
+      "Máscara facial de luz vermelha inclusa",
+    ],
+  },
+  {
+    name: "Prime",
+    price: 339,
+    highlight: true,
+    from: 429,
+    features: [
+      "Tudo do plano Plus",
+      "8 aulas de Pilates Reformer por mês",
+      "4 sessões de Recovery por mês",
+    ],
+  },
+];
+
+const brl = (n: number) =>
+  n.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+
 export default function OfferSection({ onOpenCheckout }: OfferSectionProps) {
   return (
-    <section id="lote1" className="px-6 py-20">
-      <div className="relative mx-auto max-w-[860px] overflow-hidden rounded-3xl border border-[#8636E0]/40 bg-gradient-to-b from-[#161224] to-[#0e0d16] px-8 py-11 shadow-[0_20px_60px_rgba(0,0,0,0.65),0_0_45px_rgba(94,29,166,0.25)]">
-        <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[#3B0A75] via-[#8636E0] to-[#5E1DA6]" />
-        <span className="absolute right-6 top-6 hidden rounded-full border border-purple-500 bg-[#5E1DA6]/25 px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-[0.08em] text-purple-200 sm:block">
-          Lote Fundador Exclusivo
-        </span>
+    <section className="px-6 py-12">
+      <Reveal className="mx-auto mb-12 max-w-[680px] text-center">
+        <span className="section-tag">Lote Fundador Exclusivo</span>
+        <h2
+          id="lote1"
+          className="text-2xl font-extrabold leading-[1.15] tracking-tight text-primary-dark"
+        >
+          1º Lote — Condição de Inauguração
+        </h2>
+        <p className="section-subtitle">
+          Uma oportunidade ímpar para quem valoriza saúde, padrão elevado e
+          privacidade. Ao se tornar um Membro Fundador, você congela seu valor e
+          desfruta de benefícios perpétuos.
+        </p>
+      </Reveal>
 
-        <div className="grid gap-9 md:grid-cols-[1.25fr_1fr] md:items-center">
-          <div>
-            <span className="mb-3 inline-block rounded-full border border-purple-500 bg-[#5E1DA6]/25 px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.08em] text-purple-200 sm:hidden">
-              Lote Fundador Exclusivo
-            </span>
-            <h2 className="mb-2 text-[1.85rem] font-extrabold leading-tight">
-              1º Lote — Condição de Inauguração
-            </h2>
-            <p className="mb-6 text-[15px] leading-normal text-[#9aa4b2]">
-              Uma oportunidade ímpar para quem valoriza saúde, padrão elevado e
-              privacidade. Ao se tornar um Membro Fundador, você congela seu
-              valor e desfruta de benefícios perpétuos.
-            </p>
+      <Stagger className="mx-auto grid w-full max-w-[480px] gap-5 lg:max-w-[1100px] lg:grid-cols-3">
+        {PLANS.map((p) => (
+          <StaggerItem
+            key={p.name}
+            className={`card-diff relative flex flex-col ${
+              p.highlight
+                ? "order-first border-brand/50 bg-white lg:order-none"
+                : ""
+            }`}
+          >
+            {p.highlight && (
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-brand px-4 py-1 text-[11px] font-extrabold uppercase tracking-[0.08em] text-white">
+                Plano mais vantajoso
+              </span>
+            )}
 
-            <ul className="flex flex-col gap-3.5">
-              {BENEFITS.map((b) => (
-                <li
-                  key={b.b}
-                  className="flex items-start gap-3 text-[14.8px] text-slate-200"
-                >
-                  <span className="mt-px flex h-5 w-5 min-w-5 items-center justify-center rounded-full border border-purple-500/40 bg-[#5E1DA6]/35 text-xs font-extrabold text-purple-200">
-                    ✓
-                  </span>
-                  <span>
-                    <strong>{b.b}</strong>
-                    {b.t}
-                  </span>
-                </li>
-              ))}
+            <h3 className="text-sm font-bold uppercase tracking-[0.18em] text-primary-dark">
+              L'Anetto {p.name}
+            </h3>
+
+            <div className="mt-5">
+              <div className="text-sm text-neutral-500 line-through">
+                {brl(p.from)}
+              </div>
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-[2.5rem] font-extrabold leading-none tracking-[-0.03em] text-primary-dark">
+                  {brl(p.price)}
+                </span>
+                <span className="text-sm text-neutral-600">/mês</span>
+              </div>
+              <p className="mt-2 text-[12.8px] leading-snug text-neutral-600">
+                Anual parcelado em 12x · 12 meses de fidelidade
+              </p>
+            </div>
+
+            <div className="my-6 h-px bg-primary-dark/10" />
+
+            <ul className="mb-8 flex flex-col gap-3">
+              {p.features.map((f) => {
+                const inherits = f.startsWith("Tudo do plano");
+                return (
+                  <li
+                    key={f}
+                    className="flex items-start gap-3 text-[14.4px] leading-snug text-black"
+                  >
+                    <span className="mt-px flex h-5 w-5 min-w-5 items-center justify-center rounded-full border border-purple-500/35 bg-purple-900 text-xs font-extrabold text-purple-300">
+                      ✓
+                    </span>
+                    <span
+                      className={inherits ? "font-bold text-primary-dark" : ""}
+                    >
+                      {f}
+                    </span>
+                  </li>
+                );
+              })}
             </ul>
-
-            {/* <div className="mt-5 border-t border-white/10 pt-5 text-[13.2px] text-[#9aa4b2]">
-              <div className="flex justify-between">
-                <span>Disponibilidade do lote:</span>
-                <strong className="text-purple-500">34 vagas restantes</strong>
-              </div>
-              <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
-                <div className="h-full w-[78%] rounded-full bg-gradient-to-r from-[#3B0A75] via-[#5E1DA6] to-purple-500" />
-              </div>
-            </div> */}
-          </div>
-
-          <div className="rounded-[18px] border border-[#8636E0]/25 bg-[#0e0c16]/85 p-7 text-center">
-            <div className="text-[13.6px] uppercase tracking-[0.08em] text-[#9aa4b2]">
-              Condição Especial Fundador
-            </div>
-            <div className="my-3.5 mb-5">
-              <div className="text-[2.75rem] font-extrabold leading-none tracking-[-0.03em] text-white">
-                {PRICE}
-              </div>
-              <div className="text-sm text-[#9aa4b2]">
-                por mês no plano fundador anuidade
-              </div>
-            </div>
 
             <button
               type="button"
               onClick={onOpenCheckout}
-              className="btn-hero btn-lg w-full"
+              className={
+                p.highlight
+                  ? "btn-hero btn-lg mt-auto w-full"
+                  : "mt-auto inline-flex w-full items-center justify-center rounded-full border border-brand/40 px-9 py-4 text-base font-bold text-primary-dark transition hover:bg-brand hover:text-white"
+              }
             >
-              Garantir minha vaga no 1º lote
+              Garantir {p.name}
             </button>
+          </StaggerItem>
+        ))}
+      </Stagger>
 
-            <div className="mt-4 rounded-lg border border-red-500/25 bg-red-500/10 px-3 py-2 text-[12.8px] leading-snug text-red-300">
-              ⚠️ <strong>Atenção:</strong> Encerra quando as 100 vagas acabarem
-              ou em 31/10. A partir de 12/11 o preço sobe para a tabela cheia
-              sem exceções.
-            </div>
-          </div>
-        </div>
+      <div className="mx-auto mt-8 max-w-[720px] rounded-lg border border-red-500/25 bg-yellow-500/10 px-4 py-3 text-center text-[12.8px] leading-snug text-red-700">
+        ⚠️ <strong>Atenção:</strong> Condições exclusivas para inauguração,
+        vagas limitadas.
       </div>
     </section>
   );

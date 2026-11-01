@@ -50,7 +50,7 @@ export default function CheckoutModal({ open, onClose }: CheckoutModalProps) {
             <strong>ISENTO (R$ 0,00)</strong>
           </div>
           <div className="flex justify-between text-[13.6px] text-purple-500">
-            <span>Kit Lanetto Black VIP:</span>
+            <span>Kit L'Anetto Black VIP:</span>
             <strong>INCLUSO</strong>
           </div>
         </div>
