@@ -1,0 +1,240 @@
+import type { ReactNode } from "react";
+
+/* -------------------------------------------------------------------------- */
+/*  Contato e links                                                           */
+/* -------------------------------------------------------------------------- */
+
+export const WHATSAPP_NUMBER = "5519991756620";
+
+export const MESSAGES = {
+  general: "Olá! Gostaria de conhecer a L'Anetto Fitness.",
+  vaga: "Olá! Quero garantir minha vaga na inauguração da L'Anetto Fitness.",
+};
+
+export const INSTAGRAM_URL = "https://www.instagram.com/lanettofitness/";
+
+export const MAP_EMBED_URL =
+  "https://www.google.com/maps?q=Zed+de+Boulevard+Nova+Odessa+SP&output=embed";
+
+export const MAPS_URL =
+  "https://www.google.com/maps/search/?api=1&query=Zed+de+Boulevard+Nova+Odessa+SP";
+
+/* -------------------------------------------------------------------------- */
+/*  FOTOS                                                                     */
+/*  Para colocar uma foto: salve o arquivo em /public e preencha o `src`      */
+/*  (ex.: src: "/fotos/pilates.jpg"). Ela aparece no lugar certo da página    */
+/*  e entra automaticamente na galeria ("Conheça a academia").                */
+/* -------------------------------------------------------------------------- */
+
+export type Photo = { src: string; alt: string };
+
+export const PHOTOS = {
+  hero: { src: "/home.png", alt: "Principal" },
+  pilates: { src: "/pilates.png", alt: "Estúdio de Pilates com Reformer" },
+  yoga: { src: "/yoga.png", alt: "Sala de Yoga" },
+  recovery: { src: "/recovery.png", alt: "Ambiente Recovery" },
+  musculacao: { src: "/musculacao.png", alt: "Área de musculação" },
+  lounge: { src: "/descanso.png", alt: "Recepção e lounge" },
+  cardio: { src: "/cardio.png", alt: "Cardio" },
+} satisfies Record<string, Photo>;
+
+/** Fotos extras que aparecem apenas na galeria. */
+export const GALLERY_EXTRA: Photo[] = [
+  // { src: "/fotos/extra-01.jpg", alt: "Descrição da foto" },
+];
+
+/** Todas as fotos do projeto, na ordem em que aparecem na galeria. */
+export const GALLERY: Photo[] = [...Object.values(PHOTOS), ...GALLERY_EXTRA];
+
+/* -------------------------------------------------------------------------- */
+/*  Navegação                                                                 */
+/* -------------------------------------------------------------------------- */
+
+export const NAV: { label: string; href: string; external?: boolean }[] = [
+  { label: "A Academia", href: "#academia" },
+  { label: "Experiência", href: "#experiencia" },
+  { label: "Planos", href: "#planos" },
+  { label: "Localização", href: MAPS_URL, external: true },
+];
+
+/* -------------------------------------------------------------------------- */
+/*  Faixa do hero                                                             */
+/* -------------------------------------------------------------------------- */
+
+export const HERO_FEATURES: { label: ReactNode; icon: ReactNode }[] = [
+  {
+    label: (
+      <>
+        Equipamentos que unem
+        <br />
+        qualidade e ergonomia
+      </>
+    ),
+    icon: <path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11" />,
+  },
+  {
+    label: (
+      <>
+        Equipe
+        <br />
+        dedicada
+      </>
+    ),
+    icon: (
+      <>
+        <circle cx="12" cy="8" r="3" />
+        <path d="M6 20v-1a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v1" />
+        <circle cx="4.5" cy="10" r="2" />
+        <circle cx="19.5" cy="10" r="2" />
+      </>
+    ),
+  },
+  {
+    label: (
+      <>
+        Ambiente moderno
+        <br />e acolhedor
+      </>
+    ),
+    icon: (
+      <>
+        <path d="M6 3h12l4 6-10 12L2 9z" />
+        <path d="M2 9h20M9 3l-2 6 5 12M15 3l2 6-5 12" />
+      </>
+    ),
+  },
+  {
+    label: (
+      <>
+        Bem-estar
+        <br />
+        em todas as fases
+      </>
+    ),
+    icon: (
+      <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z" />
+    ),
+  },
+];
+
+/* -------------------------------------------------------------------------- */
+/*  Diferenciais (carrossel)                                                  */
+/* -------------------------------------------------------------------------- */
+
+export const DIFFERENTIALS: { title: string; icon: ReactNode }[] = [
+  {
+    title: "Musculação",
+    icon: <path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11" />,
+  },
+  {
+    title: "Pilates com Reformers",
+    icon: (
+      <>
+        <rect x="2" y="13" width="20" height="4" rx="1.5" />
+        <path d="M5 17v3M19 17v3M6 13V9h5v4" />
+        <circle cx="16" cy="8" r="2" />
+        <path d="M13 13l1.500-3h3l1 3" />
+      </>
+    ),
+  },
+  {
+    title: "Yoga",
+    icon: (
+      <>
+        <path d="M12 4c2 2.500 3 5 3 8s-1 5.500-3 8c-2-2.500-3-5-3-8s1-5.500 3-8z" />
+        <path d="M9.500 9C6 9 3.500 11 3 14.500c3.500.5 6-.5 7.500-2.500" />
+        <path d="M14.500 9C18 9 20.500 11 21 14.500c-3.500.5-6-.5-7.500-2.500" />
+        <path d="M5 20c4 0 7-1 7-3 0 2 3 3 7 3" />
+      </>
+    ),
+  },
+  {
+    title: "Ambiente Recovery",
+    icon: (
+      <>
+        <path d="M12 2v20M4.500 6.500l15 11M19.500 6.500l-15 11" />
+        <path d="M9.500 3.500L12 6l2.500-2.500M9.500 20.500L12 18l2.500 2.500" />
+      </>
+    ),
+  },
+  {
+    title: "Calistenia",
+    icon: (
+      <>
+        <path d="M3 4h18" />
+        <path d="M7 4v3M17 4v3" />
+        <circle cx="12" cy="9" r="2" />
+        <path d="M7 7l5 3 5-3M12 11v5M12 16l-3 5M12 16l3 5" />
+      </>
+    ),
+  },
+];
+
+/* -------------------------------------------------------------------------- */
+/*  Planos                                                                    */
+/*  Serviços de cada plano: edite a lista `features` de cada um.              */
+/* -------------------------------------------------------------------------- */
+
+export type Plan = {
+  name: string;
+  tagline: string;
+  /** Valores do Lote 1: crédito (parcelado em 12x) e recorrência (mensal) */
+  price: { credit: number; recurring: number };
+  features: string[];
+  cta: string;
+  highlight?: boolean;
+  /** Links de checkout: pagamento normal e com recorrência */
+  checkout: { normal: string; recurring: string };
+};
+
+const CHECKOUT =
+  "https://vendas.online.sistemapacto.com.br/checkout?un=1&k=91882afbf5796a183650656b3cf83545";
+const checkout = (normal: number, recurring: number) => ({
+  normal: `${CHECKOUT}&pl=${normal}`,
+  recurring: `${CHECKOUT}&pl=${recurring}`,
+});
+
+export const PLANS: Plan[] = [
+  {
+    name: "Plano Basic",
+    tagline: "Ideal para quem quer começar.",
+    price: { credit: 189, recurring: 209 }, // Essential
+    features: [
+      "Acesso ilimitado a musculação e cardio",
+      "Aulas coletivas inclusas",
+      "Vestiários completos e espaços de convivência",
+      "App para acompanhar seus treinos",
+      "Atendimento personalizado",
+      "Avaliação Bioimpedância",
+    ],
+    cta: "Quero este plano",
+    checkout: checkout(3, 6), // LOTE 1 - ESSENTIAL
+  },
+  {
+    name: "Plano Plus",
+    tagline: "O equilíbrio perfeito.",
+    price: { credit: 249, recurring: 269 }, // Plus
+    features: [
+      "Tudo do plano Basic",
+      "4 aulas de Pilates Reformer por mês",
+      "2 sessões de Recovery por mês",
+      "Bota de compressão pneumática inclusa",
+      "Máscara facial de luz vermelha inclusa",
+    ],
+    cta: "Quero o Plano Plus",
+    checkout: checkout(4, 7), // LOTE 1 - PLUS
+  },
+  {
+    name: "Plano Premium",
+    tagline: "A experiência completa.",
+    highlight: true,
+    price: { credit: 309, recurring: 329 }, // Prime
+    features: [
+      "Tudo do plano Plus",
+      "8 aulas de Pilates Reformer por mês",
+      "4 sessões de Recovery por mês",
+    ],
+    cta: "Quero o Plano Premium",
+    checkout: checkout(5, 8), // LOTE 1 - PRIME
+  },
+];
