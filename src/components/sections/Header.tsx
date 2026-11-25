@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Button from "../ui/Button";
 import Logo from "../ui/Logo";
 import WhatsAppIcon from "../ui/WhatsAppIcon";
@@ -5,9 +6,30 @@ import { NAV, MESSAGES } from "../../data/landing";
 import { wppLink } from "../../helpers/Helper";
 
 export default function Header() {
+  // Depois de rolar um pouco, o header ganha fundo escuro para continuar
+  // legível sobre as seções claras.
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="absolute inset-x-0 top-0 z-50">
-      <div className="mx-auto flex max-w-[1240px] items-center justify-between gap-6 px-6 py-4">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "border-b border-white/10 bg-[#0b0710]/90 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-md"
+          : "border-b border-transparent bg-transparent"
+      }`}
+    >
+      <div
+        className={`mx-auto flex max-w-[1240px] items-center justify-between gap-6 px-6 transition-all duration-300 ${
+          scrolled ? "py-2" : "py-4"
+        }`}
+      >
         <a href="#" aria-label="L'Anetto Fitness - Início" className="shrink-0">
           <Logo />
         </a>

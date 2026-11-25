@@ -29,6 +29,7 @@ export const MAPS_URL =
 export type Photo = { src: string; alt: string };
 
 export const PHOTOS = {
+  couple: { src: "/casal-treinando.png", alt: "Principal" },
   hero: { src: "/home.png", alt: "Principal" },
   pilates: { src: "/pilates.png", alt: "Estúdio de Pilates com Reformer" },
   yoga: { src: "/yoga.png", alt: "Sala de Yoga" },
@@ -36,6 +37,7 @@ export const PHOTOS = {
   musculacao: { src: "/musculacao.png", alt: "Área de musculação" },
   lounge: { src: "/descanso.png", alt: "Recepção e lounge" },
   cardio: { src: "/cardio.png", alt: "Cardio" },
+  halteres: { src: "/halter.jpg", alt: "Halter" },
 } satisfies Record<string, Photo>;
 
 /** Fotos extras que aparecem apenas na galeria. */
@@ -222,12 +224,13 @@ export const PLANS: Plan[] = [
       "Máscara facial de luz vermelha inclusa",
     ],
     cta: "Quero o Plano Plus",
+    highlight: true,
+
     checkout: checkout(4, 7), // LOTE 1 - PLUS
   },
   {
     name: "Plano Premium",
     tagline: "A experiência completa.",
-    highlight: true,
     price: { credit: 309, recurring: 329 }, // Prime
     features: [
       "Tudo do plano Plus",

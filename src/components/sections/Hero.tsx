@@ -1,12 +1,31 @@
 import Button from "../ui/Button";
 import Reveal from "../Reveal";
 import Icon from "../Icon";
+import Photo from "../ui/Photo";
 import InstagramIcon from "../ui/InstagramIcon";
-import { HERO_FEATURES, INSTAGRAM_URL } from "../../data/landing";
+import { HERO_FEATURES, INSTAGRAM_URL, PHOTOS } from "../../data/landing";
 
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-[#0b0710] text-white">
+      {/* Foto do casal (PHOTOS.hero em src/data/landing.tsx -> /casal-treinando.png) */}
+      <div
+        className="absolute inset-y-0 right-0 w-full md:w-[52%]"
+        aria-hidden="true"
+      >
+        <Photo
+          photo={PHOTOS.couple}
+          className="object-[center_25%]"
+          placeholder={
+            <div className="h-full w-full bg-[radial-gradient(ellipse_at_70%_40%,rgba(134,54,224,0.35),transparent_60%)]" />
+          }
+        />
+        <div className="absolute inset-0 bg-[#0b0710]/60 md:bg-transparent" />
+        <div className="absolute inset-0 hidden bg-gradient-to-r from-[#0b0710] via-[#0b0710]/40 to-transparent md:block" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0b0710] to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#0b0710]/80 to-transparent" />
+      </div>
+
       <div className="relative z-10 mx-auto flex min-h-[600px] max-w-[1240px] flex-col justify-center px-6 pb-44 pt-36 md:min-h-[680px]">
         <Reveal variant="fadeUp" className="max-w-[560px]">
           <h1 className="text-[clamp(2.4rem,5.6vw,4rem)] font-semibold leading-[1.08] tracking-[-0.02em]">

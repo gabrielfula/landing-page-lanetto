@@ -27,16 +27,14 @@ export default function Plans() {
   return (
     <section id="planos" className="bg-[#f6f1ee] px-6 pb-16 pt-14">
       <Reveal variant="fadeUp" className="mx-auto max-w-[680px] text-center">
-        <h2 className="text-[clamp(1.6rem,3.4vw,2.2rem)] font-semibold tracking-tight text-[#2a1244]">
-          Condições especiais de{" "}
-          <span className="text-[#5e1da6]">inauguração</span>
+        <h2 className="bg-gradient-to-r from-[#5e1da6] to-[#8636e0] bg-clip-text text-[clamp(2.1rem,6vw,3.4rem)] font-extrabold uppercase leading-[1.05] tracking-tight text-transparent">
+          Seja um dos primeiros.
         </h2>
-        <p className="mt-2 text-[14.5px] text-[#3a2a4a]">
-          Seja um dos primeiros a fazer parte da L'Anetto e aproveite benefícios
-          exclusivos.
+        <p className="mx-auto mt-4 max-w-[560px] text-[clamp(1.1rem,2.4vw,1.45rem)] font-semibold leading-snug text-[#2a1244]">
+          Vantagens exclusivas esperam por você na inauguração da L'Anetto.
         </p>
 
-        <p className="mt-7 text-[12px] font-semibold uppercase tracking-[0.2em] text-[#5e1da6]">
+        <p className="mt-9 text-[12px] font-semibold uppercase tracking-[0.2em] text-[#5e1da6]">
           Opção de pagamento
         </p>
         <div

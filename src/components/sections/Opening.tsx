@@ -2,25 +2,41 @@ import Button from "../ui/Button";
 import Reveal from "../Reveal";
 import Icon from "../Icon";
 import Diagonals from "../ui/Diagonals";
+import Photo from "../ui/Photo";
 import WhatsAppIcon from "../ui/WhatsAppIcon";
-import { MAP_EMBED_URL, MESSAGES } from "../../data/landing";
+import { MESSAGES, PHOTOS } from "../../data/landing";
 import { wppLink } from "../../helpers/Helper";
 
 export default function Opening() {
   return (
-    <section className="relative overflow-hidden bg-[#0b0710] text-white">
+    <section
+      id="localizacao"
+      className="relative overflow-hidden bg-[#0b0710] text-white pt-5"
+    >
       <div className="mx-auto grid max-w-[1240px] md:grid-cols-[1fr_1.15fr]">
-        {/* Mapa da localização */}
-        <div className="min-h-[280px] p-6 md:p-8">
-          <div className="h-full min-h-[260px] overflow-hidden rounded-2xl border border-purple-400/30 shadow-[0_10px_40px_rgba(94,29,166,0.35)]">
-            <iframe
-              title="Mapa: Zed de Boulevard, Nova Odessa - SP"
-              src={MAP_EMBED_URL}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="h-full min-h-[260px] w-full border-0"
+        {/* Foto: halteres (PHOTOS.halteres em src/data/landing.tsx) */}
+        <div className="relative h-[220px] md:h-auto md:min-h-[300px]">
+          <div className="absolute inset-0">
+            <Photo
+              photo={PHOTOS.halteres}
+              className="object-[35%_center]"
+              placeholder={
+                <div
+                  aria-hidden="true"
+                  className="h-full w-full bg-[radial-gradient(ellipse_at_40%_60%,rgba(94,29,166,0.35),transparent_65%)]"
+                />
+              }
             />
           </div>
+          {/* Sombra suave em todas as bordas da foto */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 shadow-[inset_0_0_60px_28px_#0b0710] md:shadow-[inset_0_0_90px_40px_#0b0710]"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b0710]/70 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-[#0b0710]"
+          />
         </div>
 
         <div className="relative px-6 py-14 md:px-12">
