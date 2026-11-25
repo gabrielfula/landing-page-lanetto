@@ -1,31 +1,41 @@
-import { useEffect, useState } from "react";
-import { GALLERY } from "../data/landing";
+import { useEffect, useMemo, useState } from "react";
+import { GALLERY, GALLERY_CATEGORIES } from "../data/landing";
 
 type Props = { open: boolean; onClose: () => void };
 
+const ALL = { id: "all", label: "Todas", photos: GALLERY };
+const TABS = [ALL, ...GALLERY_CATEGORIES];
+
 export default function GalleryModal({ open, onClose }: Props) {
+  const [tab, setTab] = useState("all");
   const [current, setCurrent] = useState<number | null>(null);
+
+  const photos = useMemo(
+    () => (TABS.find((t) => t.id === tab) ?? ALL).photos,
+    [tab],
+  );
 
   useEffect(() => {
     if (!open) return;
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    const n = photos.length;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         if (current !== null) setCurrent(null);
         else onClose();
       }
       if (current !== null && e.key === "ArrowRight")
-        setCurrent((c) => (c === null ? c : (c + 1) % GALLERY.length));
+        setCurrent((c) => (c === null ? c : (c + 1) % n));
       if (current !== null && e.key === "ArrowLeft")
-        setCurrent((c) => (c === null ? c : (c - 1 + GALLERY.length) % GALLERY.length));
+        setCurrent((c) => (c === null ? c : (c - 1 + n) % n));
     };
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = prevOverflow;
       window.removeEventListener("keydown", onKey);
     };
-  }, [open, current, onClose]);
+  }, [open, current, onClose, photos.length]);
 
   if (!open) return null;
 
@@ -33,7 +43,7 @@ export default function GalleryModal({ open, onClose }: Props) {
     setCurrent(null);
     onClose();
   };
-  const selected = current !== null ? GALLERY[current] : null;
+  const selected = current !== null ? photos[current] : null;
 
   return (
     <div
@@ -43,7 +53,7 @@ export default function GalleryModal({ open, onClose }: Props) {
       className="fixed inset-0 z-[999] overflow-y-auto bg-[#08060c]/95 px-6 py-10 backdrop-blur"
     >
       <div className="mx-auto max-w-[1100px]">
-        <div className="mb-8 flex items-center justify-between">
+        <div className="mb-6 flex items-center justify-between">
           <h2 className="text-2xl font-semibold text-white">
             Conheça a <span className="text-[#b45cf5]">academia</span>
           </h2>
@@ -57,9 +67,44 @@ export default function GalleryModal({ open, onClose }: Props) {
           </button>
         </div>
 
+        {/* Categorias / ambientes */}
+        <div
+          role="tablist"
+          aria-label="Ambientes"
+          className="mb-6 flex flex-wrap gap-2"
+        >
+          {TABS.map((t) => {
+            const active = t.id === tab;
+            return (
+              <button
+                key={t.id}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                onClick={() => {
+                  setTab(t.id);
+                  setCurrent(null);
+                }}
+                className={`rounded-full border px-4 py-2 text-[13px] font-semibold transition ${
+                  active
+                    ? "border-purple-300/60 bg-gradient-to-br from-[#6b21b8] to-[#3b0a75] text-white shadow-[0_6px_20px_rgba(94,29,166,0.45)]"
+                    : "border-white/20 text-white/80 hover:bg-white/10"
+                }`}
+              >
+                {t.label}
+                <span
+                  className={`ml-2 text-[11px] ${active ? "text-white/80" : "text-white/50"}`}
+                >
+                  {t.photos.length}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
         <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
-          {GALLERY.map((p, i) => (
-            <li key={i}>
+          {photos.map((p, i) => (
+            <li key={`${tab}-${i}`}>
               <button
                 type="button"
                 onClick={() => p.src && setCurrent(i)}
@@ -108,7 +153,7 @@ export default function GalleryModal({ open, onClose }: Props) {
               onClick={(e) => {
                 e.stopPropagation();
                 setCurrent((c) =>
-                  c === null ? c : (c + dir + GALLERY.length) % GALLERY.length,
+                  c === null ? c : (c + dir + photos.length) % photos.length,
                 );
               }}
               className={`absolute top-1/2 ${pos} flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-3xl text-white transition hover:bg-white/20`}

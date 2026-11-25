@@ -55,6 +55,42 @@ export const GALLERY_EXTRA: Photo[] = [
 /** Todas as fotos do projeto, na ordem em que aparecem na galeria. */
 export const GALLERY: Photo[] = [...Object.values(PHOTOS), ...GALLERY_EXTRA];
 
+type PhotoKey = keyof typeof PHOTOS;
+
+/**
+ * Categorias (ambientes) da galeria. Para mover uma foto de categoria,
+ * troque a chave dela (a mesma de PHOTOS) de lista. A aba "Todas" mostra tudo.
+ */
+export const GALLERY_CATEGORIES: {
+  id: string;
+  label: string;
+  photos: Photo[];
+}[] = (
+  [
+    {
+      id: "treino",
+      label: "Musculação e Cardio",
+      keys: ["musculacao", "treino", "esteira", "cardio", "halteres"],
+    },
+    { id: "pilates", label: "Pilates", keys: ["pilates"] },
+    { id: "yoga", label: "Yoga", keys: ["yoga"] },
+    { id: "recovery", label: "Recovery", keys: ["recovery"] },
+    {
+      id: "estrutura",
+      label: "Estrutura e Convivência",
+      keys: [
+        "entrada",
+        "catraca",
+        "escada",
+        "lounge",
+        "banheiro",
+        "bebidas",
+        "agua",
+      ],
+    },
+  ] satisfies { id: string; label: string; keys: PhotoKey[] }[]
+).map(({ keys, ...c }) => ({ ...c, photos: keys.map((k) => PHOTOS[k]) }));
+
 /* -------------------------------------------------------------------------- */
 /*  Navegação                                                                 */
 /* -------------------------------------------------------------------------- */
