@@ -34,7 +34,7 @@ export default function Experience({
           <div className="grid grid-cols-[1.6fr_1fr] grid-rows-2 gap-3 sm:gap-4">
             <div className="row-span-2 min-h-[260px] overflow-hidden rounded-2xl shadow-[0_10px_30px_rgba(59,10,117,0.18)] sm:min-h-[320px]">
               <Photo
-                photo={PHOTOS.musculacao}
+                photo={PHOTOS.esteira}
                 placeholder={
                   <div className="h-full w-full bg-gradient-to-br from-[#2a1244] to-[#0b0710]" />
                 }
