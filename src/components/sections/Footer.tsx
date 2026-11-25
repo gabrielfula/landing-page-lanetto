@@ -39,8 +39,12 @@ export default function Footer() {
           <Logo />
         </a>
 
-        <p className="text-[11px] font-medium uppercase tracking-[0.35em] text-white/80">
-          Movimento &nbsp;•&nbsp; Bem-estar &nbsp;•&nbsp; Evolução
+        <p className="flex max-w-full flex-nowrap items-center justify-center gap-[0.9em] whitespace-nowrap text-center text-[clamp(7.5px,2.4vw,11px)] font-medium uppercase tracking-[0.16em] text-white/80 sm:tracking-[0.3em] md:tracking-[0.35em]">
+          <span>Movimento</span>
+          <span aria-hidden="true">•</span>
+          <span>Bem-estar</span>
+          <span aria-hidden="true">•</span>
+          <span>Evolução</span>
         </p>
 
         <div className="flex items-center gap-5">

@@ -29,7 +29,6 @@ export const MAPS_URL =
 export type Photo = { src: string; alt: string };
 
 export const PHOTOS = {
-  couple: { src: "/casal-treinando.png", alt: "Principal" },
   hero: { src: "/home.png", alt: "Principal" },
   pilates: { src: "/pilates.png", alt: "Estúdio de Pilates com Reformer" },
   yoga: { src: "/yoga.png", alt: "Sala de Yoga" },
@@ -38,6 +37,14 @@ export const PHOTOS = {
   lounge: { src: "/descanso.png", alt: "Recepção e lounge" },
   cardio: { src: "/cardio.png", alt: "Cardio" },
   halteres: { src: "/halter.jpg", alt: "Halter" },
+  entrada: { src: "/entrada.png", alt: "Entrada" },
+  escada: { src: "/escada.png", alt: "Escada" },
+  banheiro: { src: "/banheiro.png", alt: "Banheiro" },
+  bebidas: { src: "/bebidas.png", alt: "Bebidas" },
+  catraca: { src: "/catraca.png", alt: "Catraca" },
+  agua: { src: "/agua.png", alt: "Água" },
+  esteira: { src: "/esteira.png", alt: "Esteira" },
+  treino: { src: "/area-musculacao.png", alt: "Treino" },
 } satisfies Record<string, Photo>;
 
 /** Fotos extras que aparecem apenas na galeria. */

@@ -1,9 +1,8 @@
 import Button from "../ui/Button";
 import Reveal from "../Reveal";
 import Icon from "../Icon";
-import Photo from "../ui/Photo";
 import InstagramIcon from "../ui/InstagramIcon";
-import { HERO_FEATURES, INSTAGRAM_URL, PHOTOS } from "../../data/landing";
+import { HERO_FEATURES, INSTAGRAM_URL } from "../../data/landing";
 
 export default function Hero() {
   return (
@@ -13,12 +12,11 @@ export default function Hero() {
         className="absolute inset-y-0 right-0 w-full md:w-[52%]"
         aria-hidden="true"
       >
-        <Photo
-          photo={PHOTOS.couple}
-          className="object-[center_25%]"
-          placeholder={
-            <div className="h-full w-full bg-[radial-gradient(ellipse_at_70%_40%,rgba(134,54,224,0.35),transparent_60%)]" />
-          }
+        <img
+          src="/casal-treinando.png"
+          alt="Casal treinando"
+          loading="lazy"
+          className={`h-full w-full object-cover object-[center_25%]`}
         />
         <div className="absolute inset-0 bg-[#0b0710]/60 md:bg-transparent" />
         <div className="absolute inset-0 hidden bg-gradient-to-r from-[#0b0710] via-[#0b0710]/40 to-transparent md:block" />
