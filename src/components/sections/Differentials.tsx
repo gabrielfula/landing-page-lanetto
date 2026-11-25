@@ -50,7 +50,7 @@ export default function Differentials() {
         </Reveal>
 
         <Reveal variant="fadeUp" delay={0.1} className="relative mt-9">
-          <div ref={viewport} className="overflow-hidden px-1 pb-3">
+          <div ref={viewport} className="-mb-5 overflow-hidden px-1 pb-9 pt-1">
             <motion.ul
               ref={track}
               drag="x"
@@ -70,9 +70,19 @@ export default function Differentials() {
                 <li
                   key={d.title}
                   draggable={false}
-                  className="flex w-[220px] shrink-0 flex-col items-center rounded-2xl border border-white/15 bg-white/5 px-5 py-8 text-center backdrop-blur-sm transition hover:border-purple-400/60 hover:bg-white/10 sm:w-[250px]"
+                  className={`flex w-[220px] shrink-0 flex-col items-center rounded-2xl border px-5 py-8 text-center backdrop-blur-sm transition sm:w-[250px] ${
+                    d.featured
+                      ? "border-purple-300/60 bg-gradient-to-br from-[#7a2bd0] to-[#3b0a75] shadow-[0_10px_34px_rgba(134,54,224,0.45)]"
+                      : "border-white/15 bg-white/5 hover:border-purple-400/60 hover:bg-white/10"
+                  }`}
                 >
-                  <span className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-[#6b21b8] to-[#3b0a75] shadow-[0_6px_22px_rgba(94,29,166,0.5)]">
+                  <span
+                    className={`flex h-16 w-16 items-center justify-center rounded-full shadow-[0_6px_22px_rgba(94,29,166,0.5)] ${
+                      d.featured
+                        ? "bg-white/15 ring-1 ring-white/40"
+                        : "bg-gradient-to-br from-[#6b21b8] to-[#3b0a75]"
+                    }`}
+                  >
                     <Icon size={30} className="text-white [&_*]:stroke-[1.6]">
                       {d.icon}
                     </Icon>

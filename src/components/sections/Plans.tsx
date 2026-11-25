@@ -33,8 +33,36 @@ export default function Plans() {
         <p className="mx-auto mt-4 max-w-[560px] text-[clamp(1.1rem,2.4vw,1.45rem)] font-semibold leading-snug text-[#2a1244]">
           Vantagens exclusivas esperam por você na inauguração da L'Anetto.
         </p>
+      </Reveal>
 
-        <p className="mt-9 text-[12px] font-semibold uppercase tracking-[0.2em] text-[#5e1da6]">
+      {/* Transição: apresenta os planos e deixa clara a oferta por tempo limitado */}
+      <Reveal
+        variant="fadeUp"
+        className="mx-auto mt-14 max-w-[560px] text-center"
+      >
+        <div className="flex items-center gap-4">
+          <span className="h-px flex-1 bg-gradient-to-r from-transparent to-[#5e1da6]/40" />
+          <span className="rounded-full bg-gradient-to-br from-[#5e1da6] to-[#3b0a75] px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white">
+            Oferta de inauguração
+          </span>
+          <span className="h-px flex-1 bg-gradient-to-l from-transparent to-[#5e1da6]/40" />
+        </div>
+        <h3 className="mt-5 text-[clamp(1.4rem,3vw,1.9rem)] font-bold tracking-tight text-[#2a1244]">
+          Confira nossos <span className="text-[#5e1da6]">planos</span>
+        </h3>
+        <p className="mt-2 text-[14.5px] leading-snug text-[#3a2a4a]">
+          Valores especiais e válidos apenas por
+          <span className="font-bold text-[#5e1da6]"> tempo limitado</span>,
+          durante o período de inauguração.
+        </p>
+      </Reveal>
+
+      {/* Opção de pagamento (logo abaixo do texto da oferta) */}
+      <Reveal
+        variant="fadeUp"
+        className="mx-auto mt-8 max-w-[680px] text-center"
+      >
+        <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#5e1da6]">
           Opção de pagamento
         </p>
         <div
@@ -87,9 +115,28 @@ export default function Plans() {
           <strong className="text-[#5e1da6]">{NOTES[mode].title}:</strong>{" "}
           {NOTES[mode].text}
         </motion.div>
+        <motion.span
+          aria-hidden="true"
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          className="mt-5 inline-block text-[#5e1da6]"
+        >
+          <svg
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </motion.span>
       </Reveal>
 
-      <Stagger className="mx-auto mt-12 grid max-w-[1020px] items-stretch gap-6 md:grid-cols-3 md:gap-5">
+      <Stagger className="mx-auto mt-6 grid max-w-[1020px] items-stretch gap-6 md:grid-cols-3 md:gap-5">
         {PLANS.map((p) => (
           <StaggerItem
             key={p.name}

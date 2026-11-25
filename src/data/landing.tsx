@@ -123,7 +123,12 @@ export const HERO_FEATURES: { label: ReactNode; icon: ReactNode }[] = [
 /*  Diferenciais (carrossel)                                                  */
 /* -------------------------------------------------------------------------- */
 
-export const DIFFERENTIALS: { title: string; icon: ReactNode }[] = [
+export const DIFFERENTIALS: {
+  title: string;
+  icon: ReactNode;
+  /** Card de destaque (fundo roxo) */
+  featured?: boolean;
+}[] = [
   {
     title: "Musculação",
     icon: <path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11" />,
@@ -169,6 +174,37 @@ export const DIFFERENTIALS: { title: string; icon: ReactNode }[] = [
         <path d="M7 7l5 3 5-3M12 11v5M12 16l-3 5M12 16l3 5" />
       </>
     ),
+  },
+  {
+    title: "Pilates Solo",
+    icon: (
+      <>
+        <path d="M2 20h20" />
+        <circle cx="6" cy="11" r="2" />
+        <path d="M8 12.500l5 1.500 4-4M13 14l3.500 6M8 12.500L6 20" />
+      </>
+    ),
+  },
+  {
+    title: "Aulas Coletivas",
+    icon: (
+      <>
+        <circle cx="12" cy="8" r="3" />
+        <path d="M6 20v-1a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v1" />
+        <circle cx="4.5" cy="10" r="2" />
+        <circle cx="19.5" cy="10" r="2" />
+      </>
+    ),
+  },
+  {
+    title: "Ambiente Climatizado",
+    icon: (
+      <path d="M3 8h11a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h8a3 3 0 1 1-3 3" />
+    ),
+  },
+  {
+    title: "Sua evolução no centro de tudo",
+    icon: <path d="M3 17l6-6 4 4 8-8M15 7h6v6" />,
   },
 ];
 
