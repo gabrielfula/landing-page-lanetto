@@ -42,9 +42,20 @@ export const PHOTOS = {
   banheiro: { src: "/banheiro.png", alt: "Banheiro" },
   bebidas: { src: "/bebidas.png", alt: "Bebidas" },
   catraca: { src: "/catraca.png", alt: "Catraca" },
-  agua: { src: "/agua.png", alt: "Água" },
   esteira: { src: "/esteira.png", alt: "Esteira" },
   treino: { src: "/area-musculacao.png", alt: "Treino" },
+  banheiro2: { src: "/banheiro2.png", alt: "Banheiro 2" },
+  banheiro3: { src: "/banheiro3.png", alt: "Banheiro 3" },
+  office: { src: "/office.png", alt: "office" },
+  office2: { src: "/office.jpeg", alt: "office 2" },
+  coffe: { src: "/coffe.jpg", alt: "coffe" },
+  pilates2: { src: "/pilates2.png", alt: "pilates2" },
+  pilates3: { src: "/pilates3.png", alt: "pilates3" },
+  tv: { src: "/tv.jpg", alt: "tv" },
+  yoga2: { src: "/yoga2.png", alt: "yoga2" },
+  yoga3: { src: "/yoga3.png", alt: "yoga3" },
+  principal: { src: "/principal.png", alt: "principal" },
+  beliveinyourself: { src: "/beliveinyourself.jpeg", alt: "beliveinyourself" },
 } satisfies Record<string, Photo>;
 
 /** Fotos extras que aparecem apenas na galeria. */
@@ -70,11 +81,15 @@ export const GALLERY_CATEGORIES: {
     {
       id: "treino",
       label: "Musculação e Cardio",
-      keys: ["musculacao", "treino", "esteira", "cardio", "halteres"],
+      keys: ["musculacao", "treino", "cardio", "halteres", "principal"],
     },
-    { id: "pilates", label: "Pilates", keys: ["pilates"] },
-    { id: "yoga", label: "Yoga", keys: ["yoga"] },
-    { id: "recovery", label: "Recovery", keys: ["recovery"] },
+    {
+      id: "pilates",
+      label: "Pilates",
+      keys: ["pilates", "pilates2", "pilates3"],
+    },
+    { id: "yoga", label: "Yoga", keys: ["yoga", "yoga2", "yoga3"] },
+    { id: "recovery", label: "Recovery", keys: ["lounge", "tv"] },
     {
       id: "estrutura",
       label: "Estrutura e Convivência",
@@ -83,10 +98,16 @@ export const GALLERY_CATEGORIES: {
         "catraca",
         "escada",
         "lounge",
-        "banheiro",
         "bebidas",
-        "agua",
+        "recovery",
+        "coffe",
+        "beliveinyourself",
       ],
+    },
+    {
+      id: "banheiro",
+      label: "Banheiros",
+      keys: ["banheiro", "banheiro2", "banheiro3"],
     },
   ] satisfies { id: string; label: string; keys: PhotoKey[] }[]
 ).map(({ keys, ...c }) => ({ ...c, photos: keys.map((k) => PHOTOS[k]) }));
@@ -208,6 +229,26 @@ export const DIFFERENTIALS: {
     ),
   },
   {
+    title: "Avaliação de Bioimpedância",
+    icon: (
+      <>
+        <rect x="4" y="3" width="16" height="18" rx="2.5" />
+        <path d="M7.5 13h2l1.5-3 2 5.5 1.5-2.5h2" />
+        <path d="M8 7h8" />
+      </>
+    ),
+  },
+  {
+    title: "Aplicativo de Treino",
+    icon: (
+      <>
+        <rect x="6.5" y="2.5" width="11" height="19" rx="2.2" />
+        <path d="M10.5 5.5h3M10.5 18.5h3" />
+        <path d="M10 12l1.5 1.5L14.5 10" />
+      </>
+    ),
+  },
+  {
     title: "Calistenia",
     icon: (
       <>
@@ -240,6 +281,16 @@ export const DIFFERENTIALS: {
     ),
   },
   {
+    title: "Acompanhamento Profissional",
+    icon: (
+      <>
+        <circle cx="12" cy="7.5" r="3" />
+        <path d="M5.5 20v-1a4.5 4.5 0 0 1 4.5-4.5h4a4.5 4.5 0 0 1 4.5 4.5v1" />
+        <path d="M17.5 8.5l1.5 1.5 2.5-2.5" />
+      </>
+    ),
+  },
+  {
     title: "Ambiente Climatizado",
     icon: (
       <path d="M3 8h11a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h8a3 3 0 1 1-3 3" />
@@ -257,6 +308,7 @@ export const DIFFERENTIALS: {
 /* -------------------------------------------------------------------------- */
 
 export type Plan = {
+  id: "essential" | "plus" | "prime";
   name: string;
   tagline: string;
   /** Valores do Lote 1: crédito (parcelado em 12x) e recorrência (mensal) */
@@ -277,9 +329,10 @@ const checkout = (normal: number, recurring: number) => ({
 
 export const PLANS: Plan[] = [
   {
-    name: "Plano Basic",
+    id: "essential",
+    name: "L'Anetto Essential",
     tagline: "Ideal para quem quer começar.",
-    price: { credit: 189, recurring: 209 }, // Essential
+    price: { credit: 189, recurring: 209 },
     features: [
       "Acesso ilimitado a musculação e cardio",
       "Aulas coletivas inclusas",
@@ -288,35 +341,48 @@ export const PLANS: Plan[] = [
       "Atendimento personalizado",
       "Avaliação Bioimpedância",
     ],
-    cta: "Quero este plano",
+    cta: "Quero o L'Anetto Essential",
     checkout: checkout(3, 6), // LOTE 1 - ESSENTIAL
   },
   {
-    name: "Plano Plus",
+    id: "plus",
+    name: "L'Anetto Plus",
     tagline: "O equilíbrio perfeito.",
-    price: { credit: 249, recurring: 269 }, // Plus
+    price: { credit: 249, recurring: 269 },
     features: [
-      "Tudo do plano Basic",
+      "Acesso ilimitado a musculação e cardio",
+      "Aulas coletivas inclusas",
+      "Vestiários completos e espaços de convivência",
+      "App para acompanhar seus treinos",
+      "Atendimento personalizado",
+      "Avaliação Bioimpedância",
       "4 aulas de Pilates Reformer por mês",
       "2 sessões de Recovery por mês",
       "Bota de compressão pneumática inclusa",
       "Máscara facial de luz vermelha inclusa",
     ],
-    cta: "Quero o Plano Plus",
+    cta: "Quero o L'Anetto Plus",
     highlight: true,
-
     checkout: checkout(4, 7), // LOTE 1 - PLUS
   },
   {
-    name: "Plano Premium",
+    id: "prime",
+    name: "L'Anetto Prime",
     tagline: "A experiência completa.",
-    price: { credit: 309, recurring: 329 }, // Prime
+    price: { credit: 309, recurring: 329 },
     features: [
-      "Tudo do plano Plus",
+      "Acesso ilimitado a musculação e cardio",
+      "Aulas coletivas inclusas",
+      "Vestiários completos e espaços de convivência",
+      "App para acompanhar seus treinos",
+      "Atendimento personalizado",
+      "Avaliação Bioimpedância",
       "8 aulas de Pilates Reformer por mês",
       "4 sessões de Recovery por mês",
+      "Bota de compressão pneumática inclusa",
+      "Máscara facial de luz vermelha inclusa",
     ],
-    cta: "Quero o Plano Premium",
+    cta: "Quero o L'Anetto Prime",
     checkout: checkout(5, 8), // LOTE 1 - PRIME
   },
 ];

@@ -16,7 +16,7 @@ export default function Hero() {
           src="/casal-treinando.png"
           alt="Casal treinando"
           loading="lazy"
-          className={`h-full w-full object-cover object-[center_25%]`}
+          className="h-full w-full object-cover object-[center_25%]"
         />
         <div className="absolute inset-0 bg-[#0b0710]/60 md:bg-transparent" />
         <div className="absolute inset-0 hidden bg-gradient-to-r from-[#0b0710] via-[#0b0710]/40 to-transparent md:block" />
@@ -43,13 +43,28 @@ export default function Hero() {
             Um novo espaço para cuidar de você. Com estrutura, conforto e
             qualidade para transformar sua relação com o movimento.
           </p>
-          <Button
-            href={INSTAGRAM_URL}
-            icon={<InstagramIcon className="h-[18px] w-[18px]" />}
-            className="mt-8"
-          >
-            Conheça a L'Anetto
-          </Button>
+
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href="#planos"
+              className="group inline-flex items-center gap-2.5 rounded-full bg-white px-6 py-3.5 text-[14px] font-semibold text-[#0b0710] shadow-[0_0_28px_rgba(134,54,224,0.45)] transition-all duration-200 hover:scale-[1.02] hover:bg-[#f5eeff] hover:shadow-[0_0_36px_rgba(180,92,245,0.75)]"
+            >
+              <span>Conheça nossos planos</span>
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-200 group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </a>
+
+            <Button
+              href={INSTAGRAM_URL}
+              icon={<InstagramIcon className="h-[18px] w-[18px]" />}
+            >
+              Conheça a L'Anetto
+            </Button>
+          </div>
         </Reveal>
       </div>
 

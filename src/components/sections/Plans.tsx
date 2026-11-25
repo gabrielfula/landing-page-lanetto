@@ -3,7 +3,7 @@ import CheckBadge from "../ui/CheckBadge";
 import { useState } from "react";
 import { motion } from "motion/react";
 import Reveal, { Stagger, StaggerItem } from "../Reveal";
-import { PLANS } from "../../data/landing";
+import { PLANS, type Plan } from "../../data/landing";
 
 const MODES = [
   { id: "credit", label: "Crédito", caption: "Parcelado em 12x" },
@@ -21,6 +21,84 @@ const NOTES = {
   },
 };
 
+type FeatureRow = {
+  label: string;
+  included: boolean;
+};
+
+/**
+ * Monta as linhas de benefícios de cada plano para comparação limpa,
+ * adaptando Pilates e Recovery sem mostrar itens ausentes no Prime.
+ */
+function getPlanRows(plan: Plan): FeatureRow[] {
+  const baseFeatures = [
+    "Acesso ilimitado a musculação e cardio",
+    "Aulas coletivas inclusas",
+    "Vestiários completos e espaços de convivência",
+    "App para acompanhar seus treinos",
+    "Atendimento personalizado",
+    "Avaliação Bioimpedância",
+  ];
+
+  const isPlus = plan.id === "plus";
+  const isPrime = plan.id === "prime";
+
+  const tieredFeatures: FeatureRow[] = [
+    {
+      label: isPrime
+        ? "8 aulas de Pilates Reformer por mês"
+        : isPlus
+          ? "4 aulas de Pilates Reformer por mês"
+          : "Aulas de Pilates Reformer",
+      included: isPlus || isPrime,
+    },
+    {
+      label: isPrime
+        ? "4 sessões de Recovery por mês"
+        : isPlus
+          ? "2 sessões de Recovery por mês"
+          : "Sessões de Recovery",
+      included: isPlus || isPrime,
+    },
+    {
+      label: "Bota de compressão pneumática inclusa",
+      included: isPlus || isPrime,
+    },
+    {
+      label: "Máscara facial de luz vermelha inclusa",
+      included: isPlus || isPrime,
+    },
+  ];
+
+  return [
+    ...baseFeatures.map((label) => ({ label, included: true })),
+    ...tieredFeatures,
+  ];
+}
+
+function CrossBadge() {
+  return (
+    <span
+      aria-hidden="true"
+      className="inline-flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#5e1da6]/10 text-[#7d6896]"
+    >
+      <svg
+        width="10"
+        height="10"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M18 6L6 18" />
+        <path d="M6 6l12 12" />
+      </svg>
+    </span>
+  );
+}
+
 export default function Plans() {
   const [mode, setMode] = useState<(typeof MODES)[number]["id"]>("credit");
 
@@ -35,7 +113,6 @@ export default function Plans() {
         </p>
       </Reveal>
 
-      {/* Transição: apresenta os planos e deixa clara a oferta por tempo limitado */}
       <Reveal
         variant="fadeUp"
         className="mx-auto mt-14 max-w-[560px] text-center"
@@ -57,7 +134,6 @@ export default function Plans() {
         </p>
       </Reveal>
 
-      {/* Opção de pagamento (logo abaixo do texto da oferta) */}
       <Reveal
         variant="fadeUp"
         className="mx-auto mt-8 max-w-[680px] text-center"
@@ -136,83 +212,95 @@ export default function Plans() {
         </motion.span>
       </Reveal>
 
-      <Stagger className="mx-auto mt-6 grid max-w-[1020px] items-stretch gap-6 md:grid-cols-3 md:gap-5">
-        {PLANS.map((p) => (
-          <StaggerItem
-            key={p.name}
-            className={p.highlight ? "md:-my-2" : "md:my-0"}
-          >
-            <div
-              className={`relative flex h-full flex-col rounded-2xl bg-white/80 px-6 pb-6 pt-7 text-center shadow-[0_8px_30px_rgba(59,10,117,0.08)] ${
-                p.highlight
-                  ? "border-2 border-[#8636e0] !bg-white py-9 shadow-[0_16px_44px_rgba(94,29,166,0.22)]"
-                  : "border border-white"
-              }`}
+      <Stagger className="mx-auto mt-6 grid max-w-[1060px] items-stretch gap-6 md:grid-cols-3 md:gap-5">
+        {PLANS.map((p) => {
+          const rows = getPlanRows(p);
+
+          return (
+            <StaggerItem
+              key={p.name}
+              className={p.highlight ? "md:-my-2" : "md:my-0"}
             >
-              {p.highlight && (
-                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-gradient-to-br from-[#5e1da6] to-[#3b0a75] px-5 py-1 text-[12px] font-semibold text-white">
-                  Mais vantajoso
-                </span>
-              )}
-
-              <h3 className="text-[16px] font-semibold text-[#2a1244]">
-                {p.name}
-              </h3>
-              <p className="mt-1 text-[12.5px] text-[#4a3a5a]">{p.tagline}</p>
-
-              <div className="mt-4 text-[#5e1da6]">
-                <p className="h-4 text-[12px] font-medium text-[#4a3a5a]">
-                  {mode === "credit" ? "12x de" : "por mês"}
-                </p>
-                <motion.div
-                  key={mode}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.25 }}
-                  className="flex items-baseline justify-center gap-1"
-                >
-                  <span className="text-xl font-bold">R$</span>
-                  <span className="text-[3.2rem] font-bold leading-none tracking-tight">
-                    {mode === "credit" ? p.price.credit : p.price.recurring}
-                  </span>
-                </motion.div>
-                <p className="mt-1 text-[12px] font-semibold text-[#2a1244]">
-                  Matrícula grátis
-                </p>
-              </div>
-
-              <ul className="mx-auto mt-5 mb-5 flex w-full max-w-[270px] flex-col text-left">
-                {p.features.map((f) => (
-                  <li
-                    key={f}
-                    className="flex items-start gap-2.5 border-b border-[#2a1244]/5 py-2 text-[13px] text-[#2a1244] last:border-b-0"
-                  >
-                    <span className="mt-px">
-                      <CheckBadge />
-                    </span>
-                    <span
-                      className={
-                        f.startsWith("Tudo do plano") ? "font-semibold" : ""
-                      }
-                    >
-                      {f}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <Button
-                href={
-                  mode === "credit" ? p.checkout.normal : p.checkout.recurring
-                }
-                variant={p.highlight ? "solid" : "outline"}
-                className="mt-auto w-full !py-2.5 text-[13px]"
+              <div
+                className={`relative flex h-full flex-col rounded-2xl bg-white/80 px-6 pb-6 pt-7 text-center shadow-[0_8px_30px_rgba(59,10,117,0.08)] ${
+                  p.highlight
+                    ? "border-2 border-[#8636e0] !bg-white py-9 shadow-[0_16px_44px_rgba(94,29,166,0.22)]"
+                    : "border border-white"
+                }`}
               >
-                {p.cta}
-              </Button>
-            </div>
-          </StaggerItem>
-        ))}
+                {p.highlight && (
+                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-gradient-to-br from-[#5e1da6] to-[#3b0a75] px-5 py-1 text-[12px] font-semibold text-white">
+                    Mais vantajoso
+                  </span>
+                )}
+
+                <h3 className="text-[16px] font-semibold text-[#2a1244]">
+                  {p.name}
+                </h3>
+                <p className="mt-1 text-[12.5px] text-[#4a3a5a]">{p.tagline}</p>
+
+                <div className="mt-4 text-[#5e1da6]">
+                  <p className="h-4 text-[12px] font-medium text-[#4a3a5a]">
+                    {mode === "credit" ? "12x de" : "por mês"}
+                  </p>
+                  <motion.div
+                    key={`${p.name}-${mode}`}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="flex items-baseline justify-center gap-1"
+                  >
+                    <span className="text-xl font-bold">R$</span>
+                    <span className="text-[3.2rem] font-bold leading-none tracking-tight">
+                      {mode === "credit" ? p.price.credit : p.price.recurring}
+                    </span>
+                  </motion.div>
+                  <p className="mt-1 text-[12px] font-semibold text-[#2a1244]">
+                    Matrícula grátis
+                  </p>
+                </div>
+
+                <ul className="mx-auto mt-5 mb-5 flex w-full max-w-[285px] flex-col text-left">
+                  {rows.map(({ label, included }) => (
+                    <li
+                      key={label}
+                      className={`flex items-start gap-2.5 border-b border-[#2a1244]/5 py-2 text-[12.5px] leading-snug last:border-b-0 ${
+                        included
+                          ? "text-[#2a1244]"
+                          : "text-[#8e829c] line-through decoration-[#7d6896]/40"
+                      }`}
+                    >
+                      <span className="mt-0.5">
+                        {included ? <CheckBadge /> : <CrossBadge />}
+                      </span>
+                      <span
+                        className={
+                          p.id === "prime" &&
+                          (label.startsWith("8 aulas") ||
+                            label.startsWith("4 sessões"))
+                            ? "font-semibold"
+                            : ""
+                        }
+                      >
+                        {label}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Button
+                  href={
+                    mode === "credit" ? p.checkout.normal : p.checkout.recurring
+                  }
+                  variant={p.highlight ? "solid" : "outline"}
+                  className="mt-auto w-full !py-2.5 text-[13px]"
+                >
+                  {p.cta}
+                </Button>
+              </div>
+            </StaggerItem>
+          );
+        })}
       </Stagger>
     </section>
   );
