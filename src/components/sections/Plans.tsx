@@ -68,6 +68,14 @@ function getPlanRows(plan: Plan): FeatureRow[] {
       label: "Máscara facial de luz vermelha inclusa",
       included: isPlus || isPrime,
     },
+    {
+      label: "Prioridade de agendamentos em aulas",
+      included: isPrime,
+    },
+    {
+      label: "Comodidade de toalhas para banho inclusa",
+      included: isPrime,
+    },
   ];
 
   return [
