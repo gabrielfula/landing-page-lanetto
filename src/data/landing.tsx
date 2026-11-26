@@ -47,7 +47,7 @@ export const PHOTOS = {
   banheiro2: { src: "/banheiro2.png", alt: "Banheiro 2" },
   banheiro3: { src: "/banheiro3.png", alt: "Banheiro 3" },
   office: { src: "/office.png", alt: "office" },
-  office2: { src: "/office.jpeg", alt: "office 2" },
+  office2: { src: "/office2.jpeg", alt: "office 2" },
   coffe: { src: "/coffe.jpg", alt: "coffe" },
   pilates2: { src: "/pilates2.png", alt: "pilates2" },
   pilates3: { src: "/pilates3.png", alt: "pilates3" },
@@ -94,14 +94,15 @@ export const GALLERY_CATEGORIES: {
       id: "estrutura",
       label: "Estrutura e Convivência",
       keys: [
+        "office",
         "entrada",
         "catraca",
         "escada",
-        "lounge",
         "bebidas",
         "recovery",
         "coffe",
         "beliveinyourself",
+        "office2",
       ],
     },
     {
@@ -209,6 +210,16 @@ export const DIFFERENTIALS: {
     ),
   },
   {
+    title: "Pilates Solo",
+    icon: (
+      <>
+        <path d="M2 20h20" />
+        <circle cx="6" cy="11" r="2" />
+        <path d="M8 12.500l5 1.500 4-4M13 14l3.500 6M8 12.500L6 20" />
+      </>
+    ),
+  },
+  {
     title: "Yoga",
     icon: (
       <>
@@ -216,6 +227,28 @@ export const DIFFERENTIALS: {
         <path d="M9.500 9C6 9 3.500 11 3 14.500c3.500.5 6-.5 7.500-2.500" />
         <path d="M14.500 9C18 9 20.500 11 21 14.500c-3.500.5-6-.5-7.500-2.500" />
         <path d="M5 20c4 0 7-1 7-3 0 2 3 3 7 3" />
+      </>
+    ),
+  },
+  {
+    title: "Calistenia",
+    icon: (
+      <>
+        <path d="M3 4h18" />
+        <path d="M7 4v3M17 4v3" />
+        <circle cx="12" cy="9" r="2" />
+        <path d="M7 7l5 3 5-3M12 11v5M12 16l-3 5M12 16l3 5" />
+      </>
+    ),
+  },
+  {
+    title: "Aulas Coletivas",
+    icon: (
+      <>
+        <circle cx="12" cy="8" r="3" />
+        <path d="M6 20v-1a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v1" />
+        <circle cx="4.5" cy="10" r="2" />
+        <circle cx="19.5" cy="10" r="2" />
       </>
     ),
   },
@@ -245,38 +278,6 @@ export const DIFFERENTIALS: {
         <rect x="6.5" y="2.5" width="11" height="19" rx="2.2" />
         <path d="M10.5 5.5h3M10.5 18.5h3" />
         <path d="M10 12l1.5 1.5L14.5 10" />
-      </>
-    ),
-  },
-  {
-    title: "Calistenia",
-    icon: (
-      <>
-        <path d="M3 4h18" />
-        <path d="M7 4v3M17 4v3" />
-        <circle cx="12" cy="9" r="2" />
-        <path d="M7 7l5 3 5-3M12 11v5M12 16l-3 5M12 16l3 5" />
-      </>
-    ),
-  },
-  {
-    title: "Pilates Solo",
-    icon: (
-      <>
-        <path d="M2 20h20" />
-        <circle cx="6" cy="11" r="2" />
-        <path d="M8 12.500l5 1.500 4-4M13 14l3.500 6M8 12.500L6 20" />
-      </>
-    ),
-  },
-  {
-    title: "Aulas Coletivas",
-    icon: (
-      <>
-        <circle cx="12" cy="8" r="3" />
-        <path d="M6 20v-1a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v1" />
-        <circle cx="4.5" cy="10" r="2" />
-        <circle cx="19.5" cy="10" r="2" />
       </>
     ),
   },
