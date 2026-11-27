@@ -21,7 +21,7 @@ export const MAPS_URL =
 
 /* -------------------------------------------------------------------------- */
 /*  FOTOS                                                                     */
-/*  Para colocar uma foto: salve o arquivo em /public e preencha o src      */
+/*  Para colocar uma foto: salve o arquivo em /public e preencha o `src`      */
 /*  (ex.: src: "/fotos/pilates.jpg"). Ela aparece no lugar certo da página    */
 /*  e entra automaticamente na galeria ("Conheça a academia").                */
 /* -------------------------------------------------------------------------- */
@@ -42,9 +42,20 @@ export const PHOTOS = {
   banheiro: { src: "/banheiro.png", alt: "Banheiro" },
   bebidas: { src: "/bebidas.png", alt: "Bebidas" },
   catraca: { src: "/catraca.png", alt: "Catraca" },
-  agua: { src: "/agua.png", alt: "Água" },
   esteira: { src: "/esteira.png", alt: "Esteira" },
   treino: { src: "/area-musculacao.png", alt: "Treino" },
+  banheiro2: { src: "/banheiro2.png", alt: "Banheiro 2" },
+  banheiro3: { src: "/banheiro3.png", alt: "Banheiro 3" },
+  office: { src: "/office.png", alt: "office" },
+  office2: { src: "/office2.jpeg", alt: "office 2" },
+  coffe: { src: "/coffe.jpg", alt: "coffe" },
+  pilates2: { src: "/pilates2.png", alt: "pilates2" },
+  pilates3: { src: "/pilates3.png", alt: "pilates3" },
+  tv: { src: "/tv.jpg", alt: "tv" },
+  yoga2: { src: "/yoga2.png", alt: "yoga2" },
+  yoga3: { src: "/yoga3.png", alt: "yoga3" },
+  principal: { src: "/principal.png", alt: "principal" },
+  beliveinyourself: { src: "/beliveinyourself.jpeg", alt: "beliveinyourself" },
 } satisfies Record<string, Photo>;
 
 /** Fotos extras que aparecem apenas na galeria. */
@@ -70,23 +81,34 @@ export const GALLERY_CATEGORIES: {
     {
       id: "treino",
       label: "Musculação e Cardio",
-      keys: ["musculacao", "treino", "esteira", "cardio", "halteres"],
+      keys: ["musculacao", "treino", "cardio", "halteres", "principal"],
     },
-    { id: "pilates", label: "Pilates", keys: ["pilates"] },
-    { id: "yoga", label: "Yoga", keys: ["yoga"] },
-    { id: "recovery", label: "Recovery", keys: ["recovery"] },
+    {
+      id: "pilates",
+      label: "Pilates",
+      keys: ["pilates", "pilates2", "pilates3"],
+    },
+    { id: "yoga", label: "Yoga", keys: ["yoga", "yoga2", "yoga3"] },
+    { id: "recovery", label: "Recovery", keys: ["lounge", "tv"] },
     {
       id: "estrutura",
       label: "Estrutura e Convivência",
       keys: [
+        "office",
         "entrada",
         "catraca",
         "escada",
-        "lounge",
-        "banheiro",
         "bebidas",
-        "agua",
+        "recovery",
+        "coffe",
+        "beliveinyourself",
+        "office2",
       ],
+    },
+    {
+      id: "banheiro",
+      label: "Banheiros",
+      keys: ["banheiro", "banheiro2", "banheiro3"],
     },
   ] satisfies { id: string; label: string; keys: PhotoKey[] }[]
 ).map(({ keys, ...c }) => ({ ...c, photos: keys.map((k) => PHOTOS[k]) }));
@@ -188,6 +210,16 @@ export const DIFFERENTIALS: {
     ),
   },
   {
+    title: "Pilates Solo",
+    icon: (
+      <>
+        <path d="M2 20h20" />
+        <circle cx="6" cy="11" r="2" />
+        <path d="M8 12.500l5 1.500 4-4M13 14l3.500 6M8 12.500L6 20" />
+      </>
+    ),
+  },
+  {
     title: "Yoga",
     icon: (
       <>
@@ -195,15 +227,6 @@ export const DIFFERENTIALS: {
         <path d="M9.500 9C6 9 3.500 11 3 14.500c3.500.5 6-.5 7.500-2.500" />
         <path d="M14.500 9C18 9 20.500 11 21 14.500c-3.500.5-6-.5-7.500-2.500" />
         <path d="M5 20c4 0 7-1 7-3 0 2 3 3 7 3" />
-      </>
-    ),
-  },
-  {
-    title: "Ambiente Recovery",
-    icon: (
-      <>
-        <path d="M12 2v20M4.500 6.500l15 11M19.500 6.500l-15 11" />
-        <path d="M9.500 3.500L12 6l2.500-2.500M9.500 20.500L12 18l2.500 2.500" />
       </>
     ),
   },
@@ -219,16 +242,6 @@ export const DIFFERENTIALS: {
     ),
   },
   {
-    title: "Pilates Solo",
-    icon: (
-      <>
-        <path d="M2 20h20" />
-        <circle cx="6" cy="11" r="2" />
-        <path d="M8 12.500l5 1.500 4-4M13 14l3.500 6M8 12.500L6 20" />
-      </>
-    ),
-  },
-  {
     title: "Aulas Coletivas",
     icon: (
       <>
@@ -236,6 +249,45 @@ export const DIFFERENTIALS: {
         <path d="M6 20v-1a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v1" />
         <circle cx="4.5" cy="10" r="2" />
         <circle cx="19.5" cy="10" r="2" />
+      </>
+    ),
+  },
+  {
+    title: "Ambiente Recovery",
+    icon: (
+      <>
+        <path d="M12 2v20M4.500 6.500l15 11M19.500 6.500l-15 11" />
+        <path d="M9.500 3.500L12 6l2.500-2.500M9.500 20.500L12 18l2.500 2.500" />
+      </>
+    ),
+  },
+  {
+    title: "Avaliação de Bioimpedância",
+    icon: (
+      <>
+        <rect x="4" y="3" width="16" height="18" rx="2.5" />
+        <path d="M7.5 13h2l1.5-3 2 5.5 1.5-2.5h2" />
+        <path d="M8 7h8" />
+      </>
+    ),
+  },
+  {
+    title: "Aplicativo de Treino",
+    icon: (
+      <>
+        <rect x="6.5" y="2.5" width="11" height="19" rx="2.2" />
+        <path d="M10.5 5.5h3M10.5 18.5h3" />
+        <path d="M10 12l1.5 1.5L14.5 10" />
+      </>
+    ),
+  },
+  {
+    title: "Acompanhamento Profissional",
+    icon: (
+      <>
+        <circle cx="12" cy="7.5" r="3" />
+        <path d="M5.5 20v-1a4.5 4.5 0 0 1 4.5-4.5h4a4.5 4.5 0 0 1 4.5 4.5v1" />
+        <path d="M17.5 8.5l1.5 1.5 2.5-2.5" />
       </>
     ),
   },
@@ -253,73 +305,16 @@ export const DIFFERENTIALS: {
 
 /* -------------------------------------------------------------------------- */
 /*  Planos                                                                    */
-/*  Benefícios: edite BENEFITS. Em cada linha, true = incluso (check),      */
-/*  false = não incluso (X vermelho) e texto = incluso com detalhe.         */
+/*  Serviços de cada plano: edite a lista `features` de cada um.              */
 /* -------------------------------------------------------------------------- */
 
-/** Matrícula na tabela cheia (no Lote 1 é grátis) */
-export const ENROLLMENT_FULL_PRICE = 199;
-
-export type PlanId = "essential" | "plus" | "prime";
-
-export const BENEFITS: {
-  label: string;
-  values: Record<PlanId, boolean | string>;
-}[] = [
-  {
-    label: "Acesso ilimitado a musculação e cardio",
-    values: { essential: true, plus: true, prime: true },
-  },
-  {
-    label: "Aulas coletivas inclusas",
-    values: { essential: true, plus: true, prime: true },
-  },
-  {
-    label: "Vestiários completos e espaços de convivência",
-    values: { essential: true, plus: true, prime: true },
-  },
-  {
-    label: "App para acompanhar seus treinos",
-    values: { essential: true, plus: true, prime: true },
-  },
-  {
-    label: "Atendimento personalizado",
-    values: { essential: true, plus: true, prime: true },
-  },
-  {
-    label: "Avaliação Bioimpedância",
-    values: { essential: true, plus: true, prime: true },
-  },
-  {
-    label: "Aulas de Pilates Reformer",
-    values: { essential: false, plus: "4 por mês", prime: "8 por mês" },
-  },
-  {
-    label: "Sessões de Recovery",
-    values: { essential: false, plus: "2 por mês", prime: "4 por mês" },
-  },
-  {
-    label: "Bota de compressão pneumática",
-    values: { essential: false, plus: true, prime: true },
-  },
-  {
-    label: "Máscara facial de luz vermelha",
-    values: { essential: false, plus: true, prime: true },
-  },
-  {
-    label: "Prioridade de agendamento nas aulas",
-    values: { essential: false, plus: false, prime: true },
-  },
-];
-
 export type Plan = {
-  id: PlanId;
+  id: "essential" | "plus" | "prime";
   name: string;
   tagline: string;
   /** Valores do Lote 1: crédito (parcelado em 12x) e recorrência (mensal) */
   price: { credit: number; recurring: number };
-  /** Valor antigo (tabela cheia), exibido riscado ao lado do promocional */
-  fullPrice: { credit: number; recurring: number };
+  features: string[];
   cta: string;
   highlight?: boolean;
   /** Links de checkout: pagamento normal e com recorrência */
@@ -329,8 +324,8 @@ export type Plan = {
 const CHECKOUT =
   "https://vendas.online.sistemapacto.com.br/checkout?un=1&k=91882afbf5796a183650656b3cf83545";
 const checkout = (normal: number, recurring: number) => ({
-  normal: ${CHECKOUT}&pl=${normal},
-  recurring: ${CHECKOUT}&pl=${recurring},
+  normal: `${CHECKOUT}&pl=${normal}`,
+  recurring: `${CHECKOUT}&pl=${recurring}`,
 });
 
 export const PLANS: Plan[] = [
