@@ -305,16 +305,73 @@ export const DIFFERENTIALS: {
 
 /* -------------------------------------------------------------------------- */
 /*  Planos                                                                    */
-/*  Serviços de cada plano: edite a lista `features` de cada um.              */
+/*  Benefícios: edite BENEFITS. Em cada linha, `true` = incluso (check),      */
+/*  `false` = não incluso (X vermelho) e texto = incluso com detalhe.         */
 /* -------------------------------------------------------------------------- */
 
+/** Matrícula na tabela cheia (no Lote 1 é grátis) */
+export const ENROLLMENT_FULL_PRICE = 199;
+
+export type PlanId = "essential" | "plus" | "prime";
+
+export const BENEFITS: {
+  label: string;
+  values: Record<PlanId, boolean | string>;
+}[] = [
+  {
+    label: "Acesso ilimitado a musculação e cardio",
+    values: { essential: true, plus: true, prime: true },
+  },
+  {
+    label: "Aulas coletivas inclusas",
+    values: { essential: true, plus: true, prime: true },
+  },
+  {
+    label: "Vestiários completos e espaços de convivência",
+    values: { essential: true, plus: true, prime: true },
+  },
+  {
+    label: "App para acompanhar seus treinos",
+    values: { essential: true, plus: true, prime: true },
+  },
+  {
+    label: "Atendimento personalizado",
+    values: { essential: true, plus: true, prime: true },
+  },
+  {
+    label: "Avaliação Bioimpedância",
+    values: { essential: true, plus: true, prime: true },
+  },
+  {
+    label: "Aulas de Pilates Reformer",
+    values: { essential: false, plus: "4 por mês", prime: "8 por mês" },
+  },
+  {
+    label: "Sessões de Recovery",
+    values: { essential: false, plus: "2 por mês", prime: "4 por mês" },
+  },
+  {
+    label: "Bota de compressão pneumática",
+    values: { essential: false, plus: true, prime: true },
+  },
+  {
+    label: "Máscara facial de luz vermelha",
+    values: { essential: false, plus: true, prime: true },
+  },
+  {
+    label: "Prioridade de agendamento nas aulas",
+    values: { essential: false, plus: false, prime: true },
+  },
+];
+
 export type Plan = {
-  id: "essential" | "plus" | "prime";
+  id: PlanId;
   name: string;
   tagline: string;
   /** Valores do Lote 1: crédito (parcelado em 12x) e recorrência (mensal) */
   price: { credit: number; recurring: number };
-  features: string[];
+  /** Valor antigo (tabela cheia), exibido riscado ao lado do promocional */
+  fullPrice: { credit: number; recurring: number };
   cta: string;
   highlight?: boolean;
   /** Links de checkout: pagamento normal e com recorrência */
