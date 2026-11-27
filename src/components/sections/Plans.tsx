@@ -1,10 +1,29 @@
 import Button from "../ui/Button";
 import CheckBadge from "../ui/CheckBadge";
-import XBadge from "../ui/XBadge";
 import { useState } from "react";
 import { motion } from "motion/react";
 import Reveal, { Stagger, StaggerItem } from "../Reveal";
 import { BENEFITS, ENROLLMENT_FULL_PRICE, PLANS } from "../../data/landing";
+
+/** X vermelho: benefício não incluso no plano */
+function XBadge() {
+  return (
+    <span className="flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-red-500/15 text-red-600">
+      <svg
+        width="10"
+        height="10"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="4"
+        strokeLinecap="round"
+        aria-hidden="true"
+      >
+        <path d="M6 6l12 12M18 6L6 18" />
+      </svg>
+    </span>
+  );
+}
 
 const MODES = [
   { id: "credit", label: "Crédito", caption: "Parcelado em 12x" },
